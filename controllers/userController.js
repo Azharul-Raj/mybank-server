@@ -1,6 +1,7 @@
 import Joi from "joi";
 
-const register = async (req, res) => {
+export const register = async (req, res) => {
+    
     try {
         const JoiSchema = Joi.object({
             name: Joi.string().min(3).max(250).required(),
@@ -10,9 +11,9 @@ const register = async (req, res) => {
             password:Joi.string().min(2).required()
         })
         const validation = JoiSchema.validate(req.body);
-        console.log(validation);
+        
     } catch (error) {
-        console.log(error);
+        console.log('from catch',error);
     }
 }
 const login = async (req, res) => {
@@ -23,4 +24,3 @@ const login = async (req, res) => {
 };
 
 
-export default { register };
